@@ -1,8 +1,6 @@
-
-
 // Routes
 const String SPLASH = '/splash';
-const String AUTH = '/auth';
+const String MEW = '/mew';
 const String RESET_PASSWORD = '/reset-password';
 const String CONNECT_TO_CAMERA = '/connect-to-camera';
 const String RECORDING = '/recording';
@@ -44,7 +42,8 @@ bool isStringEmptyOrNull(String? string) => string?.isEmpty ?? true;
 extension SafeString on String? {
   bool get isEmptyOrNull => this?.isEmpty ?? true;
 
-  String getSafeString(String defaltString) => isEmptyOrNull ? defaltString : this!;
+  String getSafeString(String defaltString) =>
+      isEmptyOrNull ? defaltString : this!;
 
   String? getNotEmptyStringOrNull() => isEmptyOrNull ? null : this;
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/constants.dart';
 import 'package:travel_app/routes.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -32,7 +31,8 @@ class HideOnScroll extends StatefulWidget {
   _HideOnScrollState createState() => _HideOnScrollState();
 }
 
-class _HideOnScrollState extends State<HideOnScroll> with SingleTickerProviderStateMixin {
+class _HideOnScrollState extends State<HideOnScroll>
+    with SingleTickerProviderStateMixin {
   int _selectedIndex = 1;
   late List<Widget> _pages;
 
@@ -57,7 +57,9 @@ class _HideOnScrollState extends State<HideOnScroll> with SingleTickerProviderSt
       Padding(
         padding: EdgeInsets.all(16.0),
         child: TextField(
-          decoration: InputDecoration(labelText: 'Find contact', labelStyle: TextStyle(fontWeight: FontWeight.bold)),
+          decoration: InputDecoration(
+              labelText: 'Find contact',
+              labelStyle: TextStyle(fontWeight: FontWeight.bold)),
         ),
       ),
     ];
@@ -112,7 +114,7 @@ class TripsPage extends StatelessWidget {
           size: 38,
         ),
         onPressed: () {
-          // Navigator.of(context).push();
+          Navigator.of(context).pushNamed(MEW);
         },
       ),
       body: Column(
