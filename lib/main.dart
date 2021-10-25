@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/constants.dart';
 import 'package:travel_app/routes.dart';
+import 'package:travel_app/ui/screen/find_contact.dart';
 
 void main() {
   runApp(MyApp());
@@ -54,14 +55,7 @@ class _HideOnScrollState extends State<HideOnScroll>
         ),
       ),
       TripsPage(),
-      Padding(
-        padding: EdgeInsets.all(16.0),
-        child: TextField(
-          decoration: InputDecoration(
-              labelText: 'Find contact',
-              labelStyle: TextStyle(fontWeight: FontWeight.bold)),
-        ),
-      ),
+      FindContact(),
     ];
   }
 
