@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/page/profile_page.dart';
-import 'package:travel_app/ui/screen/home/components/trips_page.dart';
-import 'package:travel_app/widget/appbar_widget.dart';
+import 'package:travel_app/ui/screen/home/page/profile_page.dart';
+import 'package:travel_app/ui/screen/home/page/trips_page.dart';
+import 'package:travel_app/ui/component/appbar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

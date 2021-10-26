@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travel_app/ui/component/address_search.dart';
+import 'package:travel_app/ui/screen/new_trip/components/address_search.dart';
 import 'package:travel_app/controller/places_api_controller.dart';
 import 'package:uuid/uuid.dart';
 

@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/model/user.dart';
-import 'package:travel_app/page/components/sertificatus.dart';
-import 'package:travel_app/page/edit_profile_page.dart';
+import 'package:travel_app/ui/screen/home/components/sertificatus.dart';
+import 'package:travel_app/ui/screen/home/page/edit_profile_page.dart';
 import 'package:travel_app/utils/user_preferences.dart';
-import 'package:travel_app/widget/button_widget.dart';
-import 'package:travel_app/widget/profile_widget.dart';
+import 'package:travel_app/ui/component/button_widget.dart';
+import 'package:travel_app/ui/component/profile_widget.dart';
 
 class ProfilePage extends StatefulWidget {
   @override

@@ -1,12 +1,9 @@
-import 'dart:io';
-
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/model/user.dart';
 import 'package:travel_app/utils/user_preferences.dart';
-import 'package:travel_app/widget/appbar_widget.dart';
-import 'package:travel_app/widget/profile_widget.dart';
-import 'package:travel_app/widget/textfield_widget.dart';
+import 'package:travel_app/ui/component/profile_widget.dart';
+import 'package:travel_app/ui/component/textfield_widget.dart';
 
 class EditProfilePage extends StatefulWidget {
   @override
@@ -20,7 +17,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) => ThemeSwitchingArea(
         child: Builder(
           builder: (context) => Scaffold(
-            // appBar: buildAppBar(context),
             body: ListView(
               padding: EdgeInsets.symmetric(horizontal: 32),
               physics: BouncingScrollPhysics(),

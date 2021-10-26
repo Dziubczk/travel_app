@@ -2,10 +2,8 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/constants.dart';
 import 'package:travel_app/routes.dart';
-import 'package:travel_app/page/profile_page.dart';
 import 'package:travel_app/themes.dart';
 import 'package:travel_app/utils/user_preferences.dart';
-import 'package:travel_app/widget/appbar_widget.dart';
 
 void main() {
   runApp(MyApp());
