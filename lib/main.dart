@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/constants.dart';
 import 'package:travel_app/routes.dart';
-import 'package:travel_app/ui/screen/find_contact.dart';
+import 'package:travel_app/ui/screen/choose_apartment.dart';
+import 'package:travel_app/ui/screen/choose_transport.dart';
+import 'package:travel_app/ui/screen/city_search.dart';
 
 void main() {
   runApp(MyApp());
@@ -55,7 +57,7 @@ class _HideOnScrollState extends State<HideOnScroll>
         ),
       ),
       TripsPage(),
-      FindContact(),
+      ChooseApartment(),
     ];
   }
 

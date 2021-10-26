@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'controller/places_api_controller.dart';
+import 'package:travel_app/controller/places_api_controller.dart';
 
 class AddressSearch extends SearchDelegate<Suggestion> {
   AddressSearch(this.sessionToken) : apiClient = PlaceApiProvider(sessionToken);
