@@ -1,7 +1,11 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/constants.dart';
 import 'package:travel_app/routes.dart';
-import 'package:travel_app/ui/screen/find_contact.dart';
+import 'package:travel_app/page/profile_page.dart';
+import 'package:travel_app/themes.dart';
+import 'package:travel_app/utils/user_preferences.dart';
+import 'package:travel_app/widget/appbar_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,17 +14,19 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-        brightness: Brightness.dark,
+    final user = UserPreferences.myUser;
+
+    return ThemeProvider(
+      initTheme: user.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
+      child: Builder(
+        builder: (context) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeProvider.of(context),
+          initialRoute: SPLASH,
+          routes: routes,
+          navigatorObservers: <NavigatorObserver>[routeObserver],
+        ),
       ),
-      debugShowCheckedModeBanner: false,
-      home: HideOnScroll(),
-      initialRoute: SPLASH,
-      routes: routes,
-      navigatorObservers: <NavigatorObserver>[routeObserver],
     );
   }
 }
@@ -55,7 +61,7 @@ class _HideOnScrollState extends State<HideOnScroll>
         ),
       ),
       TripsPage(),
-      FindContact(),
+      ProfilePage(),
     ];
   }
 
@@ -68,10 +74,7 @@ class _HideOnScrollState extends State<HideOnScroll>
   Widget build(BuildContext context) {
     return Scaffold(
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      appBar: AppBar(
-        title: const Text('With TabBar Demo'),
-        elevation: 0,
-      ),
+      appBar: buildAppBar(context),
       body: IndexedStack(
         children: _pages,
         index: _selectedIndex,
