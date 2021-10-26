@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Icon(Icons.airplane_ticket, size: 238,color: Colors.lightGreen,),
+        child: Icon(Icons.airplane_ticket, size: 238,color: Colors.teal,),
       ),
     );
   }

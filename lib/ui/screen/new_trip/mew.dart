@@ -3,6 +3,7 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:travel_app/ui/screen/new_trip/components/choose_apartment.dart';
 import 'package:travel_app/ui/screen/new_trip/components/choose_transport.dart';
 import 'package:travel_app/ui/screen/new_trip/components/city_search.dart';
+import 'package:travel_app/ui/component/appbar_widget.dart';
 
 
 class Mew extends StatefulWidget {
@@ -110,6 +111,7 @@ class _MewState extends State<Mew> {
         return moveBack;
       },
       child: Scaffold(
+        appBar: buildAppBar(context),
         body: Stack(
           alignment: Alignment.bottomCenter,
           children: [
