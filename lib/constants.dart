@@ -2,6 +2,7 @@
 const String SPLASH = '/splash';
 const String HOME = '/home';
 const String MEW = '/mew';
+const String COVID = '/covid';
 
 typedef VoidCallback = void Function();
 typedef ValueCallback<T> = void Function(T);

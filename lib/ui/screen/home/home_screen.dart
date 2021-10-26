@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/page/profile_page.dart';
 import 'package:travel_app/ui/screen/home/components/trips_page.dart';
+import 'package:travel_app/widget/appbar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       ),
       TripsPage(),
-      Container(),
+      ProfilePage(),
     ];
   }
 
@@ -44,10 +46,7 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      appBar: AppBar(
-        title: const Text('With TabBar Demo'),
-        elevation: 0,
-      ),
+      appBar: buildAppBar(context),
       body: IndexedStack(
         children: _pages,
         index: _selectedIndex,

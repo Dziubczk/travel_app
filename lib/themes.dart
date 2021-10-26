@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MyThemes {
-  static final primary = Colors.blue;
-  static final primaryColor = Colors.blue.shade300;
+  static final primary =
+      Colors.teal;
+  // const Color(0xff03dac6);
+  static const primaryColor = Color(0xff03dac6);
 
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.grey.shade900,

@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/model/user.dart';
+import 'package:travel_app/page/components/sertificatus.dart';
 import 'package:travel_app/page/edit_profile_page.dart';
 import 'package:travel_app/utils/user_preferences.dart';
 import 'package:travel_app/widget/button_widget.dart';
@@ -19,6 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return ListView(
       physics: BouncingScrollPhysics(),
       children: [
+        const SizedBox(height: 24),
         ProfileWidget(
           imagePath: user.imagePath,
           onClicked: () {
@@ -34,7 +38,29 @@ class _ProfilePageState extends State<ProfilePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ButtonWidget(
-              onClicked: () {},
+              onClicked: () {
+                showGeneralDialog(
+                  barrierDismissible: true,
+                  barrierLabel: '',
+                  barrierColor: Colors.black38,
+                  transitionDuration: Duration(milliseconds: 500),
+                  pageBuilder: (ctx, anim1, anim2) => AlertDialog(
+                    // title: Text('blured background'),
+                    content: Certificate(),
+                    // Text('background should be blured and little bit darker '),
+                    elevation: 2,
+                  ),
+                  transitionBuilder: (ctx, anim1, anim2, child) => BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 4 * anim1.value, sigmaY: 4 * anim1.value),
+                    child: FadeTransition(
+                      child: child,
+                      opacity: anim1,
+                    ),
+                  ),
+                  context: context,
+                );
+                // Navigator.of(context).pushNamed(COVID);
+              },
               text: 'COVID SERTUFICAT',
             ),
           ],
