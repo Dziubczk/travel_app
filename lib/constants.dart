@@ -1,5 +1,6 @@
 // Routes
 const String SPLASH = '/splash';
+const String HOME = '/home';
 const String MEW = '/mew';
 
 typedef VoidCallback = void Function();

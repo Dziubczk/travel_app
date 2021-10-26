@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'package:travel_app/ui/screen/choose_apartment.dart';
-import 'package:travel_app/ui/screen/choose_transport.dart';
-import 'package:travel_app/ui/screen/city_search.dart';
+import 'package:travel_app/ui/screen/new_trip/components/choose_apartment.dart';
+import 'package:travel_app/ui/screen/new_trip/components/choose_transport.dart';
+import 'package:travel_app/ui/screen/new_trip/components/city_search.dart';
 
 
 class Mew extends StatefulWidget {
@@ -75,7 +75,6 @@ class _MewState extends State<Mew> {
           ],
         ),
       ),
-
       Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
