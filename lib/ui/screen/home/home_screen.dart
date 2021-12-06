@@ -62,7 +62,10 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      appBar: buildAppBar(context),
+      appBar: buildAppBar(
+        context,
+        showExit: _selectedIndex == 2,
+      ),
       body: IndexedStack(
         children: _pages,
         index: _selectedIndex,
