@@ -27,9 +27,25 @@ class _HomeScreenState extends State<HomeScreen>
 
     _pages = <Widget>[
       Center(
-        child: Icon(
-          Icons.ac_unit,
-          size: 150,
+        child: Column(
+          children: [
+            Text(
+              'Актуальні пропозиції',
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Кіпр',
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Берлін',
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Таллін',
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
       TripsPage(),
