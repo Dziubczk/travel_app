@@ -50,7 +50,7 @@ class _CitySearchState extends State<CitySearch> {
                 // color: Colors.black,
               ),
             ),
-            hintText: "Enter city you want shototam",
+            hintText: "Введіть назву локації для подорожі",
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(left: 8.0, top: 16.0),
           ),

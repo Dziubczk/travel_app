@@ -14,29 +14,38 @@ class Certificate extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Внутрішній COVID-19 sertificatus'),
+          Text('Внутрішній COVID-19 сертифікат'),
           SizedBox(
             height: 200,
             child: Row(
               children: [
                 buildImage(imagePath: user.imagePath, onClicked: () {}),
-                SizedBox(width: 15),
+                SizedBox(width: 10),
                 SizedBox(
                   width: 100,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('data narodgennya', softWrap: true,),
-                      Text('diysnuy do', softWrap: true,),
-                      Text('# sertuficatu', softWrap: true,),
+                      Text(
+                        'дата народження: 10.02.1999',
+                        softWrap: true,
+                      ),
+                      Text(
+                        'дійсний до: 31.01.2022',
+                        softWrap: true,
+                      ),
+                      Text(
+                        '# сертифікату: 123456',
+                        softWrap: true,
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          Text('PIB'),
+          Text('Луценко О.В.'),
         ],
       ),
     );

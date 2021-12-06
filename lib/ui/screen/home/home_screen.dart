@@ -55,15 +55,15 @@ class _HomeScreenState extends State<HomeScreen>
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.restore_from_trash),
-            label: 'Svalka Idey',
+            label: 'Головна',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.trip_origin),
-            label: 'Trips',
+            label: 'Подорожі',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Профіль',
           ),
         ],
         currentIndex: _selectedIndex,

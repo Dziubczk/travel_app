@@ -50,8 +50,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     // Text('background should be blured and little bit darker '),
                     elevation: 2,
                   ),
-                  transitionBuilder: (ctx, anim1, anim2, child) => BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 4 * anim1.value, sigmaY: 4 * anim1.value),
+                  transitionBuilder: (ctx, anim1, anim2, child) =>
+                      BackdropFilter(
+                    filter: ImageFilter.blur(
+                        sigmaX: 4 * anim1.value, sigmaY: 4 * anim1.value),
                     child: FadeTransition(
                       child: child,
                       opacity: anim1,
@@ -61,7 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 );
                 // Navigator.of(context).pushNamed(COVID);
               },
-              text: 'COVID SERTUFICAT',
+              text: 'Сертифікат про вакцинацію',
             ),
           ],
         ),
@@ -93,7 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'About',
+              'Інформація',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
