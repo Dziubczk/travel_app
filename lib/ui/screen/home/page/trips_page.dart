@@ -39,7 +39,7 @@ class TripsPage extends StatelessWidget {
         itemCount: trips.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
+            padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
             child: ListTile(
               onTap: (){
                 // Navigator.of(context).pushNamed(TRIP);
@@ -48,12 +48,10 @@ class TripsPage extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0)),
               tileColor: Colors.teal.shade50,
-              leading: Expanded(
-                child: Container(
-                  height: 100,
-                  child: Image(
-                    image: NetworkImage(trips[index].image),
-                  ),
+              leading: Container(
+                height: 100,
+                child: Image(
+                  image: NetworkImage(trips[index].image),
                 ),
               ),
               title: Text(
