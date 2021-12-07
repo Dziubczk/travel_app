@@ -14,43 +14,43 @@ class _ChooseTransportState extends State<ChooseTransport> {
     TransportOption(
         dateTimeFrom: DateTime.now(),
         dateTimeTo: DateTime.now(),
-        locationFrom: 'UGANDA',
-        locationTo: 'DOMBAS'),
+        locationFrom: 'Львів',
+        locationTo: 'Варшава'),
     TransportOption(
         dateTimeFrom: DateTime.now(),
         dateTimeTo: DateTime.now(),
-        locationFrom: 'UGANDA',
-        locationTo: 'DOMBAS'),
+        locationFrom: 'Львів',
+        locationTo: 'Варшава'),
     TransportOption(
         dateTimeFrom: DateTime.now(),
         dateTimeTo: DateTime.now(),
-        locationFrom: 'UGANDA',
-        locationTo: 'DOMBAS'),
+        locationFrom: 'Львів',
+        locationTo: 'Варшава'),
     TransportOption(
         dateTimeFrom: DateTime.now(),
         dateTimeTo: DateTime.now(),
-        locationFrom: 'UGANDA',
-        locationTo: 'DOMBAS'),
+        locationFrom: 'Львів',
+        locationTo: 'Варшава'),
     TransportOption(
         dateTimeFrom: DateTime.now(),
         dateTimeTo: DateTime.now(),
-        locationFrom: 'UGANDA',
-        locationTo: 'DOMBAS'),
+        locationFrom: 'Київ',
+        locationTo: 'Варшава'),
     TransportOption(
         dateTimeFrom: DateTime.now(),
         dateTimeTo: DateTime.now(),
-        locationFrom: 'UGANDA',
-        locationTo: 'DOMBAS'),
+        locationFrom: 'Київ',
+        locationTo: 'Варшава'),
     TransportOption(
         dateTimeFrom: DateTime.now(),
         dateTimeTo: DateTime.now(),
-        locationFrom: 'UGANDA',
-        locationTo: 'DOMBAS'),
+        locationFrom: 'Київ',
+        locationTo: 'Варшава'),
     TransportOption(
         dateTimeFrom: DateTime.now(),
         dateTimeTo: DateTime.now(),
-        locationFrom: 'UGANDA',
-        locationTo: 'DOMBAS'),
+        locationFrom: 'Київ',
+        locationTo: 'Варшава'),
   ];
 
   @override

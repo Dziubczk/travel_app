@@ -11,13 +11,22 @@ class _ChooseApartmentState extends State<ChooseApartment> {
   final _controller = TextEditingController();
 
   final houses = <Widget>[
-    ApartmentOption(location: 'Lviv'),
-    ApartmentOption(location: 'Lviv'),
-    ApartmentOption(location: 'Lviv'),
-    ApartmentOption(location: 'Lviv'),
-    ApartmentOption(location: 'Lviv'),
-    ApartmentOption(location: 'Lviv'),
-    ApartmentOption(location: 'Lviv'),
+    ApartmentOption(
+        location: 'Апартаменти в центрі',
+        imageLink:
+            "https://kiyavia.com/files/cities/barselona/Barcelona_1920.jpg"),
+    ApartmentOption(
+        location: 'Апартаменти біля моря',
+        imageLink:
+            "https://i2.wp.com/guruturizma.ru/wp-content/uploads/2016/04/Barcelona-beach.jpg?fit=1280%2C853&ssl=1"),
+    ApartmentOption(
+        location: 'Апартаменти на пляжі',
+        imageLink:
+            "https://www.barcelonacheckin.com/img/stored_images/barcelona/articles/top-10-barcelona-beach-apartments.jpg"),
+    ApartmentOption(
+        location: 'Апартаменти на окраїні',
+        imageLink:
+            "https://suitelife.com/wp-content/uploads/2017/06/gracia-barcelona-6-933x700-660x495.jpg"),
   ];
 
   @override
@@ -45,11 +54,13 @@ class ApartmentOption extends StatelessWidget {
     // required this.dateTimeTo,
     // required this.locationFrom,
     required this.location,
+    required this.imageLink,
   });
 
   // final DateTime dateTimeFrom;
   // final DateTime dateTimeTo;
   final String location;
+  final String imageLink;
 
   // final String locationTo;
 
@@ -61,10 +72,12 @@ class ApartmentOption extends StatelessWidget {
         color: Colors.grey[900],
         image: DecorationImage(
           image: NetworkImage(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/%D0%9B%D0%B2%D0%BE%D0%B2_%D0%93%D0%B0%D0%BB%D0%B8%D1%86%D0%B8%D1%98%D0%B0.jpg/300px-%D0%9B%D0%B2%D0%BE%D0%B2_%D0%93%D0%B0%D0%BB%D0%B8%D1%86%D0%B8%D1%98%D0%B0.jpg",
+            "https://kiyavia.com/files/cities/barselona/Barcelona_1920.jpg",
           ),
-
-          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.43), BlendMode.dstATop,),
+          colorFilter: ColorFilter.mode(
+            Colors.black.withOpacity(0.43),
+            BlendMode.dstATop,
+          ),
           fit: BoxFit.cover,
         ),
       ),
