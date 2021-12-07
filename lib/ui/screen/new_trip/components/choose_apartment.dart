@@ -42,6 +42,7 @@ class _ChooseApartmentState extends State<ChooseApartment> {
       itemBuilder: (BuildContext context, int index) {
         return houses[index];
       },
+      padding: EdgeInsets.only(bottom: 170),
     );
     //   Column(
     //   children: List.from(tickets),
@@ -50,7 +51,7 @@ class _ChooseApartmentState extends State<ChooseApartment> {
 }
 
 class ApartmentOption extends StatelessWidget {
-  const ApartmentOption({
+  ApartmentOption({
     // required this.dateTimeFrom,
     // required this.dateTimeTo,
     // required this.locationFrom,
@@ -63,43 +64,59 @@ class ApartmentOption extends StatelessWidget {
   final String location;
   final String imageLink;
 
+  final ValueNotifier<bool> isSelected = ValueNotifier(false);
+
   // final String locationTo;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-      decoration: BoxDecoration(
-        color: Colors.grey[900],
-        image: DecorationImage(
-          image: NetworkImage(
-            "https://kiyavia.com/files/cities/barselona/Barcelona_1920.jpg",
+    return ValueListenableBuilder(
+      valueListenable: isSelected,
+      builder: (context, bool value, _) {
+        return InkWell(
+          // onTap: () => isSelected.value = !value,
+          child: Container(
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            decoration: BoxDecoration(
+              color: value ? Colors.purple[700] : Colors.grey[900],
+              image: DecorationImage(
+                image: NetworkImage(
+                  imageLink,
+                ),
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.43),
+                  BlendMode.dstATop,
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+            height: 200,
+            child: ListTile(
+              onTap: () => isSelected.value = !value,
+              leading: Icon(
+                Icons.house,
+                color: Colors.purple,
+              ),
+              trailing: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [],
+              ),
+              title: Center(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    location,
+                    style: TextStyle(
+                        // color: value ? Colors.green : Colors.white,
+                        ),
+                  ),
+                ],
+              )),
+            ),
           ),
-          colorFilter: ColorFilter.mode(
-            Colors.black.withOpacity(0.43),
-            BlendMode.dstATop,
-          ),
-          fit: BoxFit.cover,
-        ),
-      ),
-      height: 200,
-      child: ListTile(
-        leading: Icon(
-          Icons.house,
-          color: Colors.purple,
-        ),
-        trailing: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [],
-        ),
-        title: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(location),
-          ],
-        )),
-      ),
+        );
+      },
     );
   }
 }

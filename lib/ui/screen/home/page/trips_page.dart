@@ -11,26 +11,29 @@ class TripsPage extends StatefulWidget {
 class _TripsPageState extends State<TripsPage> {
   List<Trip> trips = [
     Trip(
+      name: 'Подорож у Тернопіль',
       destination: 'Тернопіль',
-      dates: '04/09/21 - 09/09/21',
+      dates: '04/09/2021 - 09/09/2021',
       tickets: 'da',
-      apartments: 'pizda',
+      apartments: 'Апартаменти',
       image:
           'https://www.reuters.com/resizer/6oBo1-WFUspybc7LmXhGobSNG-k=/960x0/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/CSDXZLV6FNL3VI5BOYNVR5CLWY.jpg',
     ),
     Trip(
+      name: 'Подорож у Великобританію',
       destination: 'Лондон',
-      dates: '01/07/21 - 09/08/21',
+      dates: '01/07/2021 - 09/08/2021',
       tickets: 'da',
-      apartments: 'pizda',
+      apartments: 'Апартаменти',
       image:
           'https://www.visitbritain.com/sites/default/files/styles/wysiwyg_image/public/consumer/vb34156199_1100.jpg?itok=8azk9zgC',
     ),
     Trip(
+      name: 'Подорож до США',
       destination: 'Лос-Анджелес',
-      dates: '01/07/22 - 09/07/22',
+      dates: '01/07/2022 - 09/07/2022',
       tickets: 'da',
-      apartments: 'pizda',
+      apartments: 'Апартаменти',
       image: 'https://fimgs.net/himg/o.83164.jpg',
     ),
   ];

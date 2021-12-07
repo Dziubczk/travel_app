@@ -1,73 +1,42 @@
 import 'package:flutter/material.dart';
 
 class ChooseTransport extends StatefulWidget {
-  const ChooseTransport({Key? key, required this.locationTo}) : super(key: key);
+  const ChooseTransport({Key? key, required this.tickets, required this.title})
+      : super(key: key);
 
-  final String? locationTo;
+  final List<Widget> tickets;
+  final String title;
 
   @override
   _ChooseTransportState createState() => _ChooseTransportState();
 }
 
 class _ChooseTransportState extends State<ChooseTransport> {
-  final _controller = TextEditingController();
+  List<Widget> get tickets => widget.tickets;
 
-  final tickets = <Widget>[
-    TransportOption(
-        dateTimeFrom: DateTime.now(),
-        dateTimeTo: DateTime.now(),
-        locationFrom: 'Львів',
-        locationTo: 'Варшава'),
-    TransportOption(
-        dateTimeFrom: DateTime.now(),
-        dateTimeTo: DateTime.now(),
-        locationFrom: 'Львів',
-        locationTo: 'Варшава'),
-    TransportOption(
-        dateTimeFrom: DateTime.now(),
-        dateTimeTo: DateTime.now(),
-        locationFrom: 'Львів',
-        locationTo: 'Варшава'),
-    TransportOption(
-        dateTimeFrom: DateTime.now(),
-        dateTimeTo: DateTime.now(),
-        locationFrom: 'Львів',
-        locationTo: 'Варшава'),
-    TransportOption(
-        dateTimeFrom: DateTime.now(),
-        dateTimeTo: DateTime.now(),
-        locationFrom: 'Київ',
-        locationTo: 'Варшава'),
-    TransportOption(
-        dateTimeFrom: DateTime.now(),
-        dateTimeTo: DateTime.now(),
-        locationFrom: 'Київ',
-        locationTo: 'Варшава'),
-    TransportOption(
-        dateTimeFrom: DateTime.now(),
-        dateTimeTo: DateTime.now(),
-        locationFrom: 'Київ',
-        locationTo: 'Варшава'),
-    TransportOption(
-        dateTimeFrom: DateTime.now(),
-        dateTimeTo: DateTime.now(),
-        locationFrom: 'Київ',
-        locationTo: 'Варшава'),
-  ];
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: tickets.length,
-      itemBuilder: (BuildContext context, int index) {
-        return tickets[index];
-      },
+    return Column(
+      children: [
+        Text(widget.title),
+        ListView.builder(
+          shrinkWrap: true,
+          itemCount: tickets.length,
+          itemBuilder: (BuildContext context, int index) {
+            return tickets[index];
+          },
+        ),
+      ],
     );
     //   Column(
     //   children: List.from(tickets),
@@ -76,7 +45,7 @@ class _ChooseTransportState extends State<ChooseTransport> {
 }
 
 class TransportOption extends StatelessWidget {
-  const TransportOption({
+  TransportOption({
     required this.dateTimeFrom,
     required this.dateTimeTo,
     required this.locationFrom,
@@ -87,42 +56,56 @@ class TransportOption extends StatelessWidget {
   final DateTime dateTimeTo;
   final String locationFrom;
   final String locationTo;
+  final ValueNotifier<bool> isSelected = ValueNotifier(false);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-      decoration: BoxDecoration(color: Colors.grey[900]),
-      height: 100,
-      child: ListTile(
-        leading: Icon(
-          Icons.local_airport,
-          color: Colors.purple,
-        ),
-        trailing: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              locationFrom,
-              style: TextStyle(color: Colors.yellow, fontSize: 15),
+    return ValueListenableBuilder(
+      valueListenable: isSelected,
+      builder: (context, bool value, _) {
+        return Container(
+          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          decoration: BoxDecoration(
+            color: value ? Colors.grey[700] : Colors.grey[850],
+          ),
+          height: 100,
+          child: ListTile(
+            onTap: () {
+              isSelected.value = !value;
+            },
+            leading: Icon(
+              Icons.local_airport,
+              color: Colors.purple,
             ),
-            Text(
-              locationTo,
-              style: TextStyle(color: Colors.green, fontSize: 15),
+            trailing: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  locationFrom,
+                  style: TextStyle(color: Colors.yellow, fontSize: 15),
+                ),
+                Text(
+                  locationTo,
+                  style: TextStyle(color: Colors.green, fontSize: 15),
+                ),
+              ],
             ),
-          ],
-        ),
-        title: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-                '${dateTimeFrom.day}.${dateTimeFrom.month}.${dateTimeFrom.year}'),
-            Text(
-                '${dateTimeFrom.hour}:${dateTimeFrom.minute}-${dateTimeTo.hour}:${dateTimeTo.minute}'),
-          ],
-        )),
-      ),
+            title: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                      '${dateTimeFrom.day}.${dateTimeFrom.month}.${dateTimeFrom.year}'),
+                  Text(
+                      '${_withZeros(dateTimeFrom.hour)}:${_withZeros(dateTimeFrom.minute)}-${_withZeros(dateTimeTo.hour)}:${_withZeros(dateTimeTo.minute)}'),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
+
+String _withZeros(int value) => value > 9 ? '$value' : '0$value';

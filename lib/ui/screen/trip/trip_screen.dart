@@ -74,19 +74,7 @@ class _TripScreenState extends State<TripScreen> {
                   height: 10,
                 ),
                 Text(
-                  'Tickets: ${widget.trip.tickets}',
-                  style: TextStyle(
-                    fontFamily: 'PT-Sans',
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Apartaments ${widget.trip.apartments}',
+                  'Апартаменти: ${widget.trip.apartments}',
                   style: TextStyle(
                     fontFamily: 'PT-Sans',
                     fontSize: 18,

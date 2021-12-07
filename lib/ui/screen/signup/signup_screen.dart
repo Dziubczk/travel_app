@@ -81,7 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           fillColor: MaterialStateProperty.all(Colors.white),
         ),
         const Text(
-          'Remember me',
+          "Запам'ятати мене",
           style: TextStyle(
             fontFamily: 'PT-Sans',
             fontSize: 14,
@@ -111,7 +111,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
         child: const Text(
-          'SignUp',
+          'Створити акаунт',
           style: TextStyle(
             fontFamily: 'PT-Sans',
             fontSize: 16,
@@ -129,7 +129,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          "Already have an Account? ",
+          "Вже зареєстровані? ",
           style: TextStyle(
             fontFamily: 'PT-Sans',
             fontSize: 16,
@@ -138,7 +138,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
         InkWell(
           child: const Text(
-            'Sign In',
+            'Увійти',
             style: TextStyle(
               fontFamily: 'PT-Sans',
               fontSize: 16,
@@ -177,7 +177,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Column(
                 children: [
                   const Text(
-                    'Sign UP',
+                    'Реєстрація',
                     style: TextStyle(
                       fontFamily: 'PT-Sans',
                       fontSize: 30,
@@ -227,7 +227,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 10,
                   ),
                   _buildTextField(
-                    hintText: 'Enter your email',
+                    hintText: 'Введіть ваш email',
                     obscureText: false,
                     prefixedIcon: const Icon(Icons.mail, color: Colors.white),
                   ),
@@ -237,7 +237,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: const Text(
-                      'Password',
+                      'Пароль',
                       style: TextStyle(
                         fontFamily: 'PT-Sans',
                         fontSize: 16,
@@ -250,7 +250,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 10,
                   ),
                   _buildTextField(
-                    hintText: 'Enter your password',
+                    hintText: 'Введіть ваш пароль',
                     obscureText: true,
                     prefixedIcon: const Icon(Icons.lock, color: Colors.white),
                   ),

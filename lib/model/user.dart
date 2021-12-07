@@ -1,11 +1,11 @@
 class User {
-  final String imagePath;
-  final String name;
-  final String email;
-  final String about;
-  final bool isDarkMode;
+  String imagePath;
+  String name;
+  String email;
+  String about;
+  bool isDarkMode;
 
-  const User({
+  User({
     required this.imagePath,
     required this.name,
     required this.email,

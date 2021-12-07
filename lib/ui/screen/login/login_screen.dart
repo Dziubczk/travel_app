@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:travel_app/constants.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key, required this.onSignUpPressed}) : super(key: key);
+  const LoginScreen({Key? key, required this.onSignUpPressed})
+      : super(key: key);
 
   final VoidCallback onSignUpPressed;
 
@@ -59,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
       alignment: Alignment.centerRight,
       child: TextButton(
         child: const Text(
-          'Forgot Password?',
+          'Забули пароль?',
           style: TextStyle(
             fontFamily: 'PT-Sans',
             fontSize: 14,
@@ -85,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
           fillColor: MaterialStateProperty.all(Colors.white),
         ),
         const Text(
-          'Remember me',
+          "Запам'ятати мене",
           style: TextStyle(
             fontFamily: 'PT-Sans',
             fontSize: 14,
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         child: const Text(
-          'Login',
+          'Увійти',
           style: TextStyle(
             fontFamily: 'PT-Sans',
             fontSize: 16,
@@ -133,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          "Don't have an Account? ",
+          "Не маю аккаунту  ",
           style: TextStyle(
             fontFamily: 'PT-Sans',
             fontSize: 16,
@@ -142,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         InkWell(
           child: const Text(
-            'Sign Up',
+            'Зареєструватись',
             style: TextStyle(
               fontFamily: 'PT-Sans',
               fontSize: 16,
@@ -181,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   const Text(
-                    'Sign in',
+                    'Вхід',
                     style: TextStyle(
                       fontFamily: 'PT-Sans',
                       fontSize: 30,
@@ -208,7 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 10,
                   ),
                   _buildTextField(
-                    hintText: 'Enter your email',
+                    hintText: 'Введіть email',
                     obscureText: false,
                     prefixedIcon: const Icon(Icons.mail, color: Colors.white),
                   ),
@@ -218,7 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: const Text(
-                      'Password',
+                      'Пароль',
                       style: TextStyle(
                         fontFamily: 'PT-Sans',
                         fontSize: 16,
@@ -231,7 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 10,
                   ),
                   _buildTextField(
-                    hintText: 'Enter your password',
+                    hintText: 'Введіть пароль',
                     obscureText: true,
                     prefixedIcon: const Icon(Icons.lock, color: Colors.white),
                   ),
