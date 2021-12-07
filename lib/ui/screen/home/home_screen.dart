@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/model/Trip.dart';
+import 'package:travel_app/ui/screen/home/page/home_page.dart';
 import 'package:travel_app/ui/screen/home/page/profile_page.dart';
 import 'package:travel_app/ui/screen/home/page/trips_page.dart';
 import 'package:travel_app/ui/component/appbar_widget.dart';
@@ -26,28 +28,7 @@ class _HomeScreenState extends State<HomeScreen>
     super.initState();
 
     _pages = <Widget>[
-      Center(
-        child: Column(
-          children: [
-            Text(
-              'Актуальні пропозиції',
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              'Кіпр',
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              'Берлін',
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              'Таллін',
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
+      HomePage(),
       TripsPage(),
       ProfilePage(),
     ];
