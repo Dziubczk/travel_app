@@ -38,10 +38,11 @@ class _ChooseApartmentState extends State<ChooseApartment> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: houses.length,
-        itemBuilder: (BuildContext context, int index) {
-          return houses[index];
-        });
+      itemCount: houses.length,
+      itemBuilder: (BuildContext context, int index) {
+        return houses[index];
+      },
+    );
     //   Column(
     //   children: List.from(tickets),
     // );

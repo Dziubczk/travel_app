@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ChooseTransport extends StatefulWidget {
-  const ChooseTransport({Key? key}) : super(key: key);
+  const ChooseTransport({Key? key, required this.locationTo}) : super(key: key);
+
+  final String? locationTo;
 
   @override
   _ChooseTransportState createState() => _ChooseTransportState();
@@ -62,10 +64,11 @@ class _ChooseTransportState extends State<ChooseTransport> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: tickets.length,
-        itemBuilder: (BuildContext context, int index) {
-          return tickets[index];
-        });
+      itemCount: tickets.length,
+      itemBuilder: (BuildContext context, int index) {
+        return tickets[index];
+      },
+    );
     //   Column(
     //   children: List.from(tickets),
     // );

@@ -43,24 +43,24 @@ class AddressSearch extends SearchDelegate<Suggestion> {
           ? null
           : apiClient.fetchSuggestions(
               query, Localizations.localeOf(context).languageCode),
-      builder: (context, AsyncSnapshot<List<Suggestion>> snapshot) => query ==
-              ''
-          ? Container(
-              padding: EdgeInsets.all(16.0),
-              child: Text('Enter your address'),
-            )
-          : snapshot.hasData
-              ? ListView.builder(
-                  itemBuilder: (context, index) => ListTile(
-                    title:
-                        Text((snapshot.data![index] as Suggestion).description),
-                    onTap: () {
-                      close(context, snapshot.data![index] as Suggestion);
-                    },
-                  ),
-                  itemCount: snapshot.data!.length,
-                )
-              : Container(child: Text('Loading...')),
+      builder: (context, AsyncSnapshot<List<Suggestion>> snapshot) {
+        if (query == '')
+          return Container(
+            padding: EdgeInsets.all(16.0),
+            child: Text('Enter your address'),
+          );
+        if (snapshot.hasData)
+          return ListView.builder(
+            itemBuilder: (context, index) => ListTile(
+              title: Text((snapshot.data![index]).description),
+              onTap: () {
+                close(context, snapshot.data![index]);
+              },
+            ),
+            itemCount: snapshot.data!.length,
+          );
+        return Container(child: Text('Loading...'));
+      },
     );
   }
 }

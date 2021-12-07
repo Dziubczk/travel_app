@@ -4,7 +4,9 @@ import 'package:travel_app/controller/places_api_controller.dart';
 import 'package:uuid/uuid.dart';
 
 class CitySearch extends StatefulWidget {
-  const CitySearch({Key? key}) : super(key: key);
+  const CitySearch({Key? key, required this.onSelect}) : super(key: key);
+
+  final ValueChanged<String> onSelect;
 
   @override
   _CitySearchState createState() => _CitySearchState();
@@ -38,6 +40,7 @@ class _CitySearchState extends State<CitySearch> {
               setState(() {
                 _controller.text = result.description;
               });
+              widget.onSelect(result.description.split(',').first);
             }
           },
           decoration: InputDecoration(
