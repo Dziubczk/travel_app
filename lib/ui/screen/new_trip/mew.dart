@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:travel_app/model/Trip.dart';
 import 'package:travel_app/ui/screen/new_trip/components/choose_apartment.dart';
 import 'package:travel_app/ui/screen/new_trip/components/choose_transport.dart';
 import 'package:travel_app/ui/screen/new_trip/components/city_search.dart';
 import 'package:travel_app/ui/component/appbar_widget.dart';
-
 
 class Mew extends StatefulWidget {
   @override
@@ -15,6 +15,12 @@ class _MewState extends State<Mew> {
   final myController = TextEditingController();
   final searchController = TextEditingController();
 
+  late String tripName;
+  String? tripLocation;
+  late String tripDate;
+  late String tripTicket = 'abiba';
+  late String tripAppartament = 'dsaty';
+
   int _selectedIndex = 0;
   late List<Widget> _pages;
 
@@ -23,7 +29,19 @@ class _MewState extends State<Mew> {
   bool get _isPrevAvailable => _selectedIndex > 0;
 
   void _moveNext() {
-    if (_isNextAvailable) setState(() => _selectedIndex++);
+    if (_isNextAvailable) {
+      setState(() => _selectedIndex++);
+    } else {
+      Navigator.of(context).pop(Trip(
+        name: tripName,
+        destination: tripLocation!,
+        dates: tripDate,
+        image:
+            'https://www.visitbritain.com/sites/default/files/styles/wysiwyg_image/public/consumer/vb34156199_1100.jpg?itok=8azk9zgC',
+        tickets: tripTicket,
+        apartments: tripAppartament,
+      ));
+    }
   }
 
   void _movePrev() {
@@ -41,17 +59,27 @@ class _MewState extends State<Mew> {
         child: Column(
           children: [
             SizedBox(height: 100),
-            Text('Введіть назву подорожі', style: TextStyle(fontSize: 23),),
+            Text(
+              'Введіть назву подорожі',
+              style: TextStyle(fontSize: 23),
+            ),
             Container(
               child: TextField(
                 controller: myController,
+                onChanged: (value) {
+                  tripName = value;
+                },
               ),
               width: 300,
             ),
             SizedBox(
               height: 50,
             ),
-            CitySearch(),
+            CitySearch(
+              onSelect: (value) {
+                tripLocation = value;
+              },
+            ),
           ],
         ),
       ),
@@ -63,35 +91,40 @@ class _MewState extends State<Mew> {
           selectionMode: DateRangePickerSelectionMode.range,
         ),
       ),
-      ChooseTransport(),
+      ChooseTransport(
+        locationTo: tripLocation,
+      ),
       ChooseApartment(),
-      Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            SizedBox(height: 100),
-            Text('Choose transport'),
+      // Padding(
+      //   padding: EdgeInsets.all(16.0),
+      //   child: Column(
+      //     children: [
+      //       SizedBox(height: 100),
+      //       Text('Choose transport'),
+      //     ],
+      //   ),
+      // ),
+      // Padding(
+      //   padding: EdgeInsets.all(16.0),
+      //   child: Column(
+      //     children: [
+      //       SizedBox(height: 100),
+      //       Text('Choose transport'),
 
-
-          ],
-        ),
-      ),
-      Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            SizedBox(height: 100),
-            Text('Choose transport'),
-
-            // ChooseTransport(),
-          ],
-        ),
-      ),
+      //       // ChooseTransport(),
+      //     ],
+      //   ),
+      // ),
     ];
   }
 
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
-    // TODO: implement your code here
+    final value = args.value;
+    if (value is DateTime) {
+      tripDate = value.niceDate;
+    } else if (value is PickerDateRange) {
+      tripDate = value.startDate!.niceDate + ' - ' + value.endDate!.niceDate;
+    }
   }
 
   @override
@@ -106,8 +139,8 @@ class _MewState extends State<Mew> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        final bool moveBack =!_isPrevAvailable;
-         _movePrev();
+        final bool moveBack = !_isPrevAvailable;
+        _movePrev();
         return moveBack;
       },
       child: Scaffold(
@@ -133,7 +166,7 @@ class _MewState extends State<Mew> {
                     iconSize: 38,
                   ),
                   IconButton(
-                    onPressed: _isNextAvailable ? _moveNext : null,
+                    onPressed: _moveNext,
                     icon: Icon(Icons.arrow_forward_ios),
                     iconSize: 38,
                   ),
@@ -144,5 +177,11 @@ class _MewState extends State<Mew> {
         ),
       ),
     );
+  }
+}
+
+extension FineDate on DateTime {
+  String get niceDate {
+    return '$day/$month/$year';
   }
 }

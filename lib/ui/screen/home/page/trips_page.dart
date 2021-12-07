@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/constants.dart';
 import 'package:travel_app/model/Trip.dart';
+import 'package:travel_app/ui/screen/trip/trip_screen.dart';
 
-class TripsPage extends StatelessWidget {
+class TripsPage extends StatefulWidget {
+  @override
+  State<TripsPage> createState() => _TripsPageState();
+}
+
+class _TripsPageState extends State<TripsPage> {
   List<Trip> trips = [
     Trip(
       destination: 'Тернопіль',
       dates: '04/09/21 - 09/09/21',
+      tickets: 'da',
+      apartments: 'pizda',
       image:
           'https://www.reuters.com/resizer/6oBo1-WFUspybc7LmXhGobSNG-k=/960x0/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/CSDXZLV6FNL3VI5BOYNVR5CLWY.jpg',
     ),
     Trip(
       destination: 'Лондон',
       dates: '01/07/21 - 09/08/21',
+      tickets: 'da',
+      apartments: 'pizda',
       image:
           'https://www.visitbritain.com/sites/default/files/styles/wysiwyg_image/public/consumer/vb34156199_1100.jpg?itok=8azk9zgC',
     ),
     Trip(
       destination: 'Лос-Анджелес',
       dates: '01/07/22 - 09/07/22',
+      tickets: 'da',
+      apartments: 'pizda',
       image: 'https://fimgs.net/himg/o.83164.jpg',
     ),
   ];
@@ -31,8 +43,14 @@ class TripsPage extends StatelessWidget {
           Icons.add,
           size: 38,
         ),
-        onPressed: () {
-          Navigator.of(context).pushNamed(MEW);
+        onPressed: () async {
+          final newTrip = await Navigator.of(context).pushNamed(MEW);
+
+          if (newTrip != null && newTrip is Trip) {
+            setState(() {
+              trips.add(newTrip);
+            });
+          }
         },
       ),
       body: ListView.builder(
@@ -42,20 +60,25 @@ class TripsPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
             child: ListTile(
               onTap: () {
-                // Navigator.of(context).pushNamed(TRIP);
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => TripScreen(trip: trips[index]),
+                  ),
+                  // (BuildContext context) =>TripScreen(trip: trips[index])
+                );
               },
               isThreeLine: true,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0)),
-              tileColor: Colors.teal.shade50,
-              leading: Container(
+              tileColor: Colors.teal.shade100,
+              leading: Image(
+                image: NetworkImage(trips[index].image),
+                fit: BoxFit.fill,
                 height: 100,
-                child: Image(
-                  image: NetworkImage(trips[index].image),
-                ),
+                width: 100,
               ),
               title: Text(
-                trips[index].destination,
+                trips[index].name,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,

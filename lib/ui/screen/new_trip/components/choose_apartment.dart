@@ -29,10 +29,11 @@ class _ChooseApartmentState extends State<ChooseApartment> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: houses.length,
-        itemBuilder: (BuildContext context, int index) {
-          return houses[index];
-        });
+      itemCount: houses.length,
+      itemBuilder: (BuildContext context, int index) {
+        return houses[index];
+      },
+    );
     //   Column(
     //   children: List.from(tickets),
     // );
@@ -63,8 +64,10 @@ class ApartmentOption extends StatelessWidget {
           image: NetworkImage(
             "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/%D0%9B%D0%B2%D0%BE%D0%B2_%D0%93%D0%B0%D0%BB%D0%B8%D1%86%D0%B8%D1%98%D0%B0.jpg/300px-%D0%9B%D0%B2%D0%BE%D0%B2_%D0%93%D0%B0%D0%BB%D0%B8%D1%86%D0%B8%D1%98%D0%B0.jpg",
           ),
-
-          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.43), BlendMode.dstATop,),
+          colorFilter: ColorFilter.mode(
+            Colors.black.withOpacity(0.43),
+            BlendMode.dstATop,
+          ),
           fit: BoxFit.cover,
         ),
       ),

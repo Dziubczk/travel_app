@@ -13,9 +13,10 @@ final Map<String, Widget Function(BuildContext)> routes =
   SPLASH: (BuildContext context) => SplashScreen(),
   MEW: (BuildContext context) => Mew(),
   HOME: (BuildContext context) => HomeScreen(),
-      AUTH: (BuildContext context) => AuthScreen(),
-      // LOGIN: (BuildContext context) => LoginScreen(),
-      // SIGNUP: (BuildContext context) => SignUpScreen(),
+  AUTH: (BuildContext context) => AuthScreen(),
+  // TRIP: (BuildContext context) => TRIP(),
+  // LOGIN: (BuildContext context) => LoginScreen(),
+  // SIGNUP: (BuildContext context) => SignUpScreen(),
 
   // COVID: (BuildContext context) => CovidScreen(),
 };
