@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:travel_app/constants.dart';
 import 'package:travel_app/model/Trip.dart';
 import 'package:travel_app/ui/screen/new_trip/components/choose_apartment.dart';
 import 'package:travel_app/ui/screen/new_trip/components/choose_transport.dart';
@@ -18,8 +19,11 @@ class _MewState extends State<Mew> {
   late String tripName;
   String? tripLocation;
   late String tripDate;
-  late String tripTicket = 'abiba';
-  late String tripAppartament = 'dsaty';
+  late String tripTicket = '14/12/2021 - 21/12/2021';
+  late String tripAppartament = 'Апартаменти біля моря';
+
+  final tickets = <Widget>[];
+  final backTickets = <Widget>[];
 
   int _selectedIndex = 0;
   late List<Widget> _pages;
@@ -29,15 +33,104 @@ class _MewState extends State<Mew> {
   bool get _isPrevAvailable => _selectedIndex > 0;
 
   void _moveNext() {
+    if (_pages.length < 3 && tripLocation != null) {
+      tickets.addAll(
+        <Widget>[
+          TransportOption(
+            dateTimeFrom:
+                DateTime.now().add(Duration(days: 6, hours: 8, minutes: 11)),
+            dateTimeTo:
+                DateTime.now().add(Duration(days: 6, hours: 12, minutes: 15)),
+            locationFrom: 'Львів',
+            locationTo: tripLocation.getSafeString('Варшава'),
+          ),
+          TransportOption(
+            dateTimeFrom:
+                DateTime.now().add(Duration(days: 6, hours: 9, minutes: 16)),
+            dateTimeTo:
+                DateTime.now().add(Duration(days: 6, hours: 13, minutes: 7)),
+            locationFrom: 'Львів',
+            locationTo: tripLocation.getSafeString('Варшава'),
+          ),
+          TransportOption(
+            dateTimeFrom:
+                DateTime.now().add(Duration(days: 6, hours: 10, minutes: 4)),
+            dateTimeTo:
+                DateTime.now().add(Duration(days: 6, hours: 15, minutes: 28)),
+            locationFrom: 'Київ',
+            locationTo: tripLocation.getSafeString('Варшава'),
+          ),
+          TransportOption(
+            dateTimeFrom:
+                DateTime.now().add(Duration(days: 6, hours: 12, minutes: 49)),
+            dateTimeTo:
+                DateTime.now().add(Duration(days: 6, hours: 18, minutes: 19)),
+            locationFrom: 'Київ',
+            locationTo: tripLocation.getSafeString('Варшава'),
+          ),
+        ],
+      );
+
+      backTickets.addAll(
+        <Widget>[
+          TransportOption(
+            dateTimeFrom:
+                DateTime.now().add(Duration(days: 13, hours: 8, minutes: 11)),
+            dateTimeTo:
+                DateTime.now().add(Duration(days: 13, hours: 12, minutes: 15)),
+            locationTo: 'Львів',
+            locationFrom: tripLocation.getSafeString('Варшава'),
+          ),
+          TransportOption(
+            dateTimeFrom:
+                DateTime.now().add(Duration(days: 13, hours: 9, minutes: 16)),
+            dateTimeTo:
+                DateTime.now().add(Duration(days: 13, hours: 13, minutes: 7)),
+            locationTo: 'Львів',
+            locationFrom: tripLocation.getSafeString('Варшава'),
+          ),
+          TransportOption(
+            dateTimeFrom:
+                DateTime.now().add(Duration(days: 13, hours: 10, minutes: 4)),
+            dateTimeTo:
+                DateTime.now().add(Duration(days: 13, hours: 15, minutes: 28)),
+            locationTo: 'Київ',
+            locationFrom: tripLocation.getSafeString('Варшава'),
+          ),
+          TransportOption(
+            dateTimeFrom:
+                DateTime.now().add(Duration(days: 13, hours: 12, minutes: 49)),
+            dateTimeTo:
+                DateTime.now().add(Duration(days: 4, hours: 18, minutes: 19)),
+            locationTo: 'Київ',
+            locationFrom: tripLocation.getSafeString('Варшава'),
+          ),
+        ],
+      );
+
+      setState(() {
+        _pages.addAll([
+          ChooseTransport(
+            title: 'Оберіть квиток:',
+            tickets: tickets,
+          ),
+          ChooseTransport(
+            title: 'Зворотній квиток:',
+            tickets: backTickets,
+          ),
+          ChooseApartment(),
+        ]);
+      });
+    }
     if (_isNextAvailable) {
       setState(() => _selectedIndex++);
     } else {
       Navigator.of(context).pop(Trip(
         name: tripName,
-        destination: tripLocation!,
+        destination: tripLocation ?? '',
         dates: tripDate,
         image:
-            'https://www.visitbritain.com/sites/default/files/styles/wysiwyg_image/public/consumer/vb34156199_1100.jpg?itok=8azk9zgC',
+            'https://i2.wp.com/guruturizma.ru/wp-content/uploads/2016/04/Barcelona-beach.jpg?fit=1280%2C853&ssl=1',
         tickets: tripTicket,
         apartments: tripAppartament,
       ));
@@ -91,10 +184,16 @@ class _MewState extends State<Mew> {
           selectionMode: DateRangePickerSelectionMode.range,
         ),
       ),
-      ChooseTransport(
-        locationTo: tripLocation,
-      ),
-      ChooseApartment(),
+      // ListView.builder(
+      //   itemCount: tickets.length,
+      //   itemBuilder: (BuildContext context, int index) {
+      //     return tickets[index];
+      //   },
+      // ),
+      // ChooseTransport(
+      //   tickets: tickets,
+      // ),
+      // ChooseApartment(),
       // Padding(
       //   padding: EdgeInsets.all(16.0),
       //   child: Column(
@@ -123,7 +222,8 @@ class _MewState extends State<Mew> {
     if (value is DateTime) {
       tripDate = value.niceDate;
     } else if (value is PickerDateRange) {
-      tripDate = value.startDate!.niceDate + ' - ' + value.endDate!.niceDate;
+      tripDate =
+          value.startDate!.niceDate + ' - ' + (value.endDate?.niceDate ?? '');
     }
   }
 

@@ -18,27 +18,36 @@ class HomePage extends StatefulWidget {
 class _ProfilePageState extends State<HomePage> {
   List<Trip> trips = [
     Trip(
+      name: '',
+      tickets: '',
+      apartments: '',
       destination: 'Афіни',
       dates: '04/09/21 - 09/09/21',
       image:
           'https://blog.reikartz.com/media/filer_public/91/10/911009ec-19a8-4926-942c-7edebd0ec5cc/athens_layover.jpg',
     ),
     Trip(
+      name: '',
+      tickets: '',
+      apartments: '',
       destination: 'Київ',
       dates: '01/07/21 - 09/08/21',
       image: 'https://miro.medium.com/max/14272/1*ib92bb0GBwDJ_6p_k81STA.jpeg',
     ),
     Trip(
+      name: '',
+      tickets: '',
+      apartments: '',
       destination: 'Стамбул',
       dates: '01/07/22 - 09/07/22',
       image: 'http://www.atorus.ru/public/ator/data/4544e6.jpg',
     ),
   ];
 
+  User get user => UserPreferences.myUser;
+
   @override
   Widget build(BuildContext context) {
-    final user = UserPreferences.myUser;
-
     return Scaffold(
       body: Column(
         children: [

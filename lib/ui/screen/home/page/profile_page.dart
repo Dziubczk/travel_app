@@ -15,20 +15,27 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  User get user => UserPreferences.myUser;
+
   @override
   Widget build(BuildContext context) {
-    final user = UserPreferences.myUser;
-
     return ListView(
       physics: BouncingScrollPhysics(),
       children: [
         const SizedBox(height: 24),
         ProfileWidget(
           imagePath: user.imagePath,
-          onClicked: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => EditProfilePage()),
+          onClicked: () async {
+            await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => EditProfilePage(
+                  updateInfo: () {
+                    setState(() {});
+                  },
+                ),
+              ),
             );
+            setState(() {});
           },
         ),
         const SizedBox(height: 24),
